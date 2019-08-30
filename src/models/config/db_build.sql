@@ -8,7 +8,7 @@ CREATE TABLE baraka_user (
 );
 CREATE TABLE baraka_list (
     id SERIAL PRIMARY KEY,
-    name VARCHAR NOT NULL
+    name VARCHAR NOT NULINSERT INTO baraka_item (content, is_done, list_id, user_idL
 );
 CREATE TABLE baraka_item (
     id SERIAL PRIMARY KEY,
