@@ -1,5 +1,5 @@
 BEGIN;
-DROP TABLE IF EXISTS baraka_user baraka_list baraka_item;
+DROP TABLE IF EXISTS baraka_user, baraka_list, baraka_item;
 CREATE TABLE baraka_user (
     id SERIAL PRIMARY KEY,
     username VARCHAR(30) NOT NULL,
