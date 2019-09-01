@@ -1,0 +1,36 @@
+<section>
+    {{ > header}}
+    <form class="home__form" action="/addList" method="POST">
+        <input id="addlist" class="home__main__input" type="text" name="listName" aria-label="input" value="" placeholder="Add new list" required>
+        <input id='submit' class="home__main__add" type="submit" value="Add List" aria-label="Add List">
+    </form>
+    <p class="err-msg"></p>
+    <div class="home__results">
+        {{#each result}}
+        <div class="home__list">
+            <h1 class="list__title">{{this.name}}</h1>
+            <form action="/addItem" class="list__form" method="POST">
+                <input type="number" name="listId" value="{{this.id}}" hidden>
+                <input type="text" name="content" id="addItemContent" class="item__content" aria-label="input" placeholder="Add Description" required>
+                <input type="submit" class="item__add" id="submit" value="add Item" aria-label="Add Item">
+            </form>
+
+            {{#each this.item}}
+                <div class="list__item">
+                    <form action="/markDone" method="POST">
+                    <input type="number" name="id" value="{{this.id}}" hidden>
+                    {{#if this.is_done}}
+                        <button class="done" type="submit" aria-label="Add Item" hidden></button>
+                    {{else}}
+                    <button class="fa fa-check item__mark" type="submit" aria-label="Add Item"></button>
+                    {{/if}}
+                    </form>
+                    <p class="item__pcontent">{{this.content}}</p>
+                    <p class="item__username">{{this.username}}</p>
+                </div>
+            {{/each}}
+        </div>
+        {{/each}}
+    </div>
+    {{ > footer}}
+</section>
