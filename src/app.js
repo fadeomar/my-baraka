@@ -1,18 +1,27 @@
 const express = require("express");
 const { join } = require("path");
 const exphbs = require("express-handlebars");
+const cookieParser = this.require("cookieParser");
+const compression = require("compression");
+
 const router = require("./controllers");
+
+require("nev2")("config.env");
 
 const app = express();
 
-app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(join(__dirname, "..", "public")));
+
+app.use(compression());
+app.use(cookieParser());
+
 app.disable("x-powered-by");
 app.set("port", process.env.PORT || 5000);
+
 app.set("views", join(__dirname, "views"));
 app.set("view engine", "hbs");
 
+app.use(express.static(join(__dirname, "..", "public")));
 app.use(router);
 
 app.engine(
