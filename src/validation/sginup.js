@@ -1,6 +1,6 @@
 const Joi = require("@hapi/joi");
 
-const schema = Joi.object.keys({
+const schema = Joi.object().keys({
   username: Joi.string()
     .alphanum()
     .min(2)

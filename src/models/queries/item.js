@@ -1,8 +1,8 @@
-const { query } = require("../config/connection");
+const connection = require("../config/connection");
 
 const selectAll = () => {
   const sql = `SELECT * FROM baraka_item;`;
-  return query(sql);
+  return connection.query(sql);
 };
 
 const insert = itemData => {
@@ -11,7 +11,7 @@ const insert = itemData => {
     text: `INSERT INTO baraka_item (content, is_done, list_id, user_id) VALUES ($1,$2,$3,$4);`,
     values: [content, isDone, listId, userId]
   };
-  return query(sql);
+  return connection.query(sql);
 };
 
 const doneKey = id => {
@@ -19,12 +19,12 @@ const doneKey = id => {
     text: `UPDATE baraka_item SET is_done = true where id =$1;`,
     values: [id]
   };
-  return query(sql);
+  return connection.query(sql);
 };
 
 const getItmesOwners = () => {
-  const sql = `SELECT baraka_item.id, content, is_done, baraka_user.username from baraka_item INNER JOIN baraka_user ON baraka_user.id = baraka_item.user_id;`;
-  return query(sql);
+  const sql = `SELECT baraka_item.id, content, is_done, list_id, baraka_user.username from baraka_item INNER JOIN baraka_user ON baraka_user.id = baraka_item.user_id;`;
+  return connection.query(sql);
 };
 
 module.exports = { getItmesOwners, insert, selectAll, doneKey };

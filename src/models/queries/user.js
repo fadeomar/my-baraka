@@ -1,24 +1,25 @@
-const { query } = require("../config/connection");
+const connection = require("../config/connection");
+
 const insert = userData => {
   const { username, password, email } = userData;
   const sql = {
     text: `INSERT INTO baraka_user (username, password, email) VALUES ($1, $2, $3);`,
     values: [username, password, email]
   };
-  return query(sql);
+  return connection.query(sql);
 };
 
 const selectAll = () => {
   const sql = `SELECT * form baraka_user;`;
-  return query(sql);
+  return connection.query(sql);
 };
 
 const find = username => {
   const sql = {
-    text: `SELECT * FROM baraka_user EHERE baraka_user.username LIKE $1;`,
+    text: `SELECT * FROM baraka_user WHERE baraka_user.username = $1;`,
     values: [username]
   };
-  return query(sql);
+  return connection.query(sql);
 };
 
 module.exports = { selectAll, insert, find };

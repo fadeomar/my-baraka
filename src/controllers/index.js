@@ -9,16 +9,16 @@ const { addItem, addList, markDone } = require("./postData");
 
 router.get("/", home);
 
-router.get("login", login.get);
-router.get("./logout", logout);
-router.get("./signup", sginup.get);
+router.get("/login", login.get);
+router.get("/logout", logout);
+router.get("/signup", sginup.get);
 
-router.post("./login", login.post);
-router.post("./signup", sginup.post);
+router.post("/login", login.post);
+router.post("/signup", sginup.post);
 
-router.post("./addList", addList);
-router.post("./addItem", addItem);
-router.post("./markDone", markDone);
+router.post("/addList", addList);
+router.post("/addItem", addItem);
+router.post("/markDone", markDone);
 
 router.all("*", clint);
 router.use(server);

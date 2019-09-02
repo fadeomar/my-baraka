@@ -1,17 +1,18 @@
-const { query } = require("../config/connection");
+const connection = require("../config/connection");
 
 const insert = listData => {
   const { name } = listData;
+  console.log(name);
   const sql = {
     text: `INSERT INTO baraka_list (name) VALUES ($1);`,
-    VALUES: [name]
+    values: [name]
   };
-  return query(sql);
+  return connection.query(sql);
 };
 
 const selectAll = () => {
   const sql = `SELECT * FROM baraka_list;`;
-  return query(sql);
+  return connection.query(sql);
 };
 
 module.exports = { insert, selectAll };

@@ -11,6 +11,7 @@ const addList = (req, res, next) => {
 
 const addItem = (req, res, next) => {
   const { listId, content } = req.body;
+  console.log(req.cokkies.token);
   const { token } = req.cokkies;
   const key = process.env.KEY;
   if (!token) res.redirect("login");

@@ -1,12 +1,12 @@
 const express = require("express");
 const { join } = require("path");
 const exphbs = require("express-handlebars");
-const cookieParser = this.require("cookieParser");
+const cookieParser = require("cookie-parser");
 const compression = require("compression");
 
 const router = require("./controllers");
 
-require("nev2")("config.env");
+require("env2")("config.env");
 
 const app = express();
 
